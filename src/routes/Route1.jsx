@@ -47,11 +47,23 @@ const islands = [
       {
         id: 'syrup1',
         question: 'If HTML is the skeleton of a webpage, which technology serves as its dynamic muscle, allowing interaction?',
-        options: ['CSS', 'JavaScript', 'PHP', 'XML'],
+        options: ['CSS', 'XML', 'PHP', 'JavaScript'],
         correctAnswer: 'JavaScript',
       }
     ],
   },
+  {
+    id: 5,
+    name: 'Laugh Tale',
+    questions: [
+      {
+        id: 'Laugh1',
+        question: 'What is the correct order of the answers for the above questions?',
+        options: ['Q1-B, Q2-B, Q3-C, Q4-D', 'Q1-B, Q2-B, Q3-D, Q4-C', 'Q1-A, Q2-B, Q3-A, Q4-D', 'Q1-A, Q2-B, Q3-B, Q4-D'],
+        correctAnswer: 'Q1-A, Q2-B, Q3-B, Q4-D',
+      }
+    ],
+  }
   
 ];
 
@@ -82,9 +94,9 @@ const EastBlue = () => {
       setIsCorrect(false);
     } else if (!allCorrect) {
       setWrongAttempts((prev) => prev + 1);
-      if (wrongAttempts + 1 >= 3) {
+      if (wrongAttempts + 1 >= 2) {
         setIsLocked(true);
-        setTimeLeft(120); // Start the 2 minutes countdown
+        setTimeLeft(180); // Start the 2 minutes countdown
       }
     }
   };
@@ -96,7 +108,7 @@ const EastBlue = () => {
           if (prev <= 1) {
             clearInterval(timer);
             setIsLocked(false);
-            setTimeLeft(120); // Reset time
+            setTimeLeft(180); // Reset time
             return 0;
           }
           return prev - 1;
@@ -123,43 +135,43 @@ const EastBlue = () => {
 
 
     // Security Measures
-    // useEffect(() => {
-    //   // Disable Right-Click
-    //   const handleContextMenu = (e) => {
-    //     e.preventDefault();
-    //   };
+    useEffect(() => {
+      // Disable Right-Click
+      const handleContextMenu = (e) => {
+        e.preventDefault();
+      };
   
-    //   // Disable Key Combinations (F12, Ctrl+Shift+I, etc.)
-    //   const handleKeyDown = (e) => {
-    //     if (
-    //       e.key === 'F12' ||
-    //       (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-    //       (e.ctrlKey && e.key === 'U') ||
-    //       (e.key === 'F5') ||
-    //       (e.ctrlKey && e.key === 'r') ||
-    //       (e.key === 'Backspace') ||
-    //       (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight'))
-    //     ) {
-    //       e.preventDefault();
-    //     }
-    //   };
+      // Disable Key Combinations (F12, Ctrl+Shift+I, etc.)
+      const handleKeyDown = (e) => {
+        if (
+          e.key === 'F12' ||
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+          (e.ctrlKey && e.key === 'U') ||
+          (e.key === 'F5') ||
+          (e.ctrlKey && e.key === 'r') ||
+          (e.key === 'Backspace') ||
+          (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight'))
+        ) {
+          e.preventDefault();
+        }
+      };
   
-    //   // Prevent Back/Forward Navigation with History API
-    //   history.pushState(null, null, window.location.href);
-    //   const handlePopState = () => {
-    //     history.pushState(null, null, window.location.href);
-    //   };
+      // Prevent Back/Forward Navigation with History API
+      history.pushState(null, null, window.location.href);
+      const handlePopState = () => {
+        history.pushState(null, null, window.location.href);
+      };
   
-    //   document.addEventListener('contextmenu', handleContextMenu);
-    //   document.addEventListener('keydown', handleKeyDown);
-    //   window.addEventListener('popstate', handlePopState);
+      document.addEventListener('contextmenu', handleContextMenu);
+      document.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('popstate', handlePopState);
   
-    //   return () => {
-    //     document.removeEventListener('contextmenu', handleContextMenu);
-    //     document.removeEventListener('keydown', handleKeyDown);
-    //     window.removeEventListener('popstate', handlePopState);
-    //   };
-    // }, []);
+      return () => {
+        document.removeEventListener('contextmenu', handleContextMenu);
+        document.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, []);
 
   return (
     <div>
@@ -231,10 +243,10 @@ const EastBlue = () => {
         </div>
       )}
       {isLocked && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
           <div className="bg-white p-6 rounded shadow-lg text-center">
             <img src={devilSmile} alt="BlackBeard" className="w-25 h-27 mx-auto mb-4" />
-            <h2 className="text-xl font-bold text-red-600">You’ve put 3 wrong inputs!</h2>
+            <h2 className="text-xl font-bold text-red-600">You’ve put 2 wrong inputs!</h2>
             <p className="text-gray-700">Now wait for:</p>
             <p className="text-2xl font-bold text-blue-500">{`${Math.floor(timeLeft / 60)}:${
               timeLeft % 60 < 10 ? '0' : ''
