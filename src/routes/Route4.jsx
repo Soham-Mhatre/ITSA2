@@ -11,8 +11,8 @@ const islands = [
       {
         id: "sabaody1",
         question: 'What iconic landmark in Mumbai is known for its stunning Gothic architecture and serves as a major railway terminus?',
-        options: ['Gateway of India', 'Chhatrapati Shivaji Maharaj Terminus (CST)', 'Marine Drive', 'Bandra-Worli Sea Link'],
-        correctAnswer: 'Chhatrapati Shivaji Maharaj Terminus (CST)',
+        options: ['Gateway of India', 'Chhatrapati Shivaji Maharaj Terminus (CSMT)', 'Marine Drive', 'Bandra-Worli Sea Link'],
+        correctAnswer: 'Chhatrapati Shivaji Maharaj Terminus (CSMT)',
       }
     ]
   },
@@ -47,10 +47,22 @@ const islands = [
       {
         id: "marine1",
         question: 'What is the primary function of a router in a computer network?',
-        options: ['To store data', 'To connect different networks', 'To process requests', 'To secure the network'],
+        options: ['To connect different networks','To store data', 'To process requests', 'To secure the network'],
         correctAnswer: 'To connect different networks',
       }
     ]
+  },
+  {
+    id: 5,
+    name: 'Laugh Tale',
+    questions: [
+      {
+        id: 'Laugh1',
+        question: 'What is the correct order of the answers for the above questions?',
+        options: ['Q1-B, Q2-B, Q3-A, Q4-A', 'Q1-B, Q2-B, Q3-C, Q4-A','Q1-A, Q2-B, Q3-A, Q4-D', 'Q1-A, Q2-B, Q3-B, Q4-A'],
+        correctAnswer: 'Q1-B, Q2-B, Q3-C, Q4-A',
+      }
+    ],
   }
 ];
 
@@ -106,6 +118,48 @@ const Route4 = () => {
     }
     return () => clearInterval(timer);
   }, [isLocked]);
+
+  // isko at the end pura code hone pr uncomment krna hai
+
+
+    // Security Measures
+    useEffect(() => {
+      // Disable Right-Click
+      const handleContextMenu = (e) => {
+        e.preventDefault();
+      };
+  
+      // Disable Key Combinations (F12, Ctrl+Shift+I, etc.)
+      const handleKeyDown = (e) => {
+        if (
+          e.key === 'F12' ||
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+          (e.ctrlKey && e.key === 'U') ||
+          (e.key === 'F5') ||
+          (e.ctrlKey && e.key === 'r') ||
+          (e.key === 'Backspace') ||
+          (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight'))
+        ) {
+          e.preventDefault();
+        }
+      };
+  
+      // Prevent Back/Forward Navigation with History API
+      history.pushState(null, null, window.location.href);
+      const handlePopState = () => {
+        history.pushState(null, null, window.location.href);
+      };
+  
+      document.addEventListener('contextmenu', handleContextMenu);
+      document.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('popstate', handlePopState);
+  
+      return () => {
+        document.removeEventListener('contextmenu', handleContextMenu);
+        document.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, []);
 
   return (
     <div className="overflow-hidden h-screen">
@@ -172,10 +226,10 @@ const Route4 = () => {
         </div>
       )}
       {isLocked && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
           <div className="bg-white p-6 rounded shadow-lg text-center">
             <img src={devilSmile} alt="Devil Smile" className="w-25 h-27 mx-auto mb-4" />
-            <h2 className="text-xl font-bold text-red-600">You’ve put 3 wrong inputs!</h2>
+            <h2 className="text-xl font-bold text-red-600">You’ve put 2 wrong inputs!</h2>
             <p className="text-gray-700">Now wait for:</p>
             <p className="text-2xl font-bold text-blue-500">{`${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60}`}</p>
           </div>

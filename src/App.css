@@ -219,3 +219,8 @@ main {
 .bracket:hover {
   box-shadow: inset 0px 0px 25px #1479EA;
 }
+
+.bb{
+  height: 12rem;
+  width: 27rem;
+}
