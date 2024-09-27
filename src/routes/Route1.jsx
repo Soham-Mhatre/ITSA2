@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import devilSmile from '../components/devilsmile.png'; 
-// import ship from '../components/ship.png';
-// import marines from '../components/marines.png';
-// import pirate from '../components/pirate.png';
 
 const islands = [
   {
@@ -58,7 +55,7 @@ const islands = [
   
 ];
 
-const Route1 = () => {
+const EastBlue = () => {
   const [currentIsland, setCurrentIsland] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isCorrect, setIsCorrect] = useState(false);
@@ -169,7 +166,7 @@ const Route1 = () => {
       <Link to="/" className="text-blue-500 mb-4 inline-block fall-back">
         &larr; Back to Map
       </Link>
-      <h2 className="text-xl mb-2 font-bold text-4c5eba rotating-text">Route 1</h2>
+      <h2 className="text-xl mb-2 font-bold text-4c5eba rotating-text">East Blue</h2>
       <div className="relative">
         <div className="absolute top-1/2 left-0  right-0 h-1 bg-blue-300 transform -translate-y-1/2"></div>
         <div className="flex justify-between text-white items-center relative z-10">
@@ -236,7 +233,7 @@ const Route1 = () => {
       {isLocked && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75">
           <div className="bg-white p-6 rounded shadow-lg text-center">
-            <img src={devilSmile} alt="Devil Smile" className="w-25 h-27 mx-auto mb-4" />
+            <img src={devilSmile} alt="BlackBeard" className="w-25 h-27 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-red-600">You’ve put 3 wrong inputs!</h2>
             <p className="text-gray-700">Now wait for:</p>
             <p className="text-2xl font-bold text-blue-500">{`${Math.floor(timeLeft / 60)}:${
@@ -249,4 +246,4 @@ const Route1 = () => {
   );
 };
 
-export default Route1;
+export default EastBlue;

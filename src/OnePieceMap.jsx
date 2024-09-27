@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const routes = [
   { id: 'route1', name: 'East Blue', color: 'blue' },
-  { id: 'route2', name: 'Alabasta', color: 'yellow' },
-  { id: 'route3', name: 'Sky Island', color: 'green' },
-  { id: 'route4', name: 'Water 7', color: 'red' },
+  { id: 'route2', name: 'South Blue', color: 'yellow' },
+  { id: 'route3', name: 'North Blue', color: 'green' },
+  { id: 'route4', name: 'West Blue', color: 'red' },
 ];
 
 const OnePieceMap = () => {
