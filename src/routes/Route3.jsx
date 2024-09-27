@@ -112,7 +112,7 @@ const Route3 = () => {
     <Link to="/" className="text-blue-500 mb-4 inline-block fall-back">
       &larr; Back to Map
       </Link>
-      <h2 className="text-xl mb-2 font-bold">Route 3</h2>
+      <h2 className="text-xl mb-2 font-bold rotating-text">North Blue</h2>
       <div className="relative">
         <div className="absolute top-1/2 left-0 right-0 h-1 bg-blue-300 transform -translate-y-1/2"></div>
         <div className="flex justify-between text-white items-center relative z-10">
@@ -174,8 +174,8 @@ const Route3 = () => {
       {isLocked && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75">
           <div className="bg-white p-6 rounded shadow-lg text-center">
-            <img src={devilSmile} alt="Devil Smile" className="w-25 h-27 mx-auto mb-4" />
-            <h2 className="text-xl font-bold text-red-600">You’ve put 3 wrong inputs!</h2>
+          <img src={devilSmile} alt="BlackBeard" className="w-25 h-27 mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-red-600">You’ve put 3 wrong inputs!</h2>
             <p className="text-gray-700">Now wait for:</p>
             <p className="text-2xl font-bold text-blue-500">{`${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60}`}</p>
           </div>

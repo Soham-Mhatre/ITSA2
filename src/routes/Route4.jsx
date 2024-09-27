@@ -112,7 +112,7 @@ const Route4 = () => {
     <Link to="/" className="text-blue-500 mb-4 inline-block fall-back">
       &larr; Back to Map
       </Link>
-      <h2 className="text-xl mb-2 font-bold">Route 4</h2>
+      <h2 className="text-xl mb-2 font-bold rotating-text">West Blue</h2>
       <div className="relative">
         <div className="absolute top-1/2 left-0 right-0 h-1 bg-blue-300 transform -translate-y-1/2"></div>
         <div className="flex justify-between text-white items-center relative z-10">
