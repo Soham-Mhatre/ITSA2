@@ -1,0 +1,32 @@
+// Timer State Variable
+const [timeLeft, setTimeLeft] = useState(120); // 2 minutes
+
+// UseEffect for Countdown Timer
+useEffect(() => {
+  if (isLocked) {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          setIsLocked(false);
+          setTimeLeft(120); // Reset time
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }
+}, [isLocked]);
+
+// Displaying the Timer
+{isLocked && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="bg-white p-6 rounded shadow-lg text-center">
+      <img src="path_to_devil_smile_avatar.png" alt="Devil Smile" className="mx-auto mb-4" />
+      <h2 className="text-lg font-semibold mb-2">You've made 3 wrong inputs!</h2>
+      <p className="text-gray-700">Now wait for:</p>
+      <p className="text-2xl font-bold text-blue-500">{`${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60}`}</p>
+    </div>
+  </div>
+)}
