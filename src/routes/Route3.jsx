@@ -93,7 +93,7 @@ const Route3 = () => {
       setIsCorrect(false);
     } else if (!allCorrect) {
       setWrongAttempts(prev => prev + 1);
-      if (wrongAttempts + 1 >= 3) {
+      if (wrongAttempts + 1 >= 2) {
         setIsLocked(true);
         setTimeLeft(180); // Start the 3 minutes countdown
       }

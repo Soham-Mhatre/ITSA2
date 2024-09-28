@@ -93,7 +93,7 @@ const Route4 = () => {
       setIsCorrect(false);
     } else if (!allCorrect) {
       setWrongAttempts(prev => prev + 1);
-      if (wrongAttempts + 1 >= 3) {
+      if (wrongAttempts + 1 >= 2) {
         setIsLocked(true);
         setTimeLeft(180); // Start the 3 minutes countdown
       }
@@ -220,7 +220,7 @@ const Route4 = () => {
             <p className="mt-4 text-green-500">Correct! You can move to the next island.</p>
           )}
           {isCorrect && currentIsland === islands.length - 1 && (
-            <p className="mt-4 text-green-500">Congratulations! You've completed Route 4!</p>
+            <p className="mt-4 text-black-500">Arrgh! Booty be hidin' in the swashbucklin' Boxing arena, next to the grog-filled V Lounge! Keep yer wits sharp and yer cutlass ready, matey!🏴‍☠️🍻"</p>
           )}
           {!isCorrect && !isLocked && <p className="mt-4 text-red-500"></p>}
         </div>
