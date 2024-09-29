@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import devilSmile from '../components/devilsmile.png'; // Add your image here
+import React, { useState, useEffect } from "react";
+import { MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+import devilSmile from "../components/devilsmile.png"; // Add your image here
 
 const islands = [
   {
@@ -10,11 +10,17 @@ const islands = [
     questions: [
       {
         id: "sabaody1",
-        question: 'What iconic landmark in Mumbai is known for its stunning Gothic architecture and serves as a major railway terminus?',
-        options: ['Gateway of India', 'Chhatrapati Shivaji Maharaj Terminus (CSMT)', 'Marine Drive', 'Bandra-Worli Sea Link'],
-        correctAnswer: 'Chhatrapati Shivaji Maharaj Terminus (CSMT)',
-      }
-    ]
+        question:
+          "What is the name of the historic fort in Mumbai that was originally built by the Portuguese in the 16th century and later expanded by the British?",
+        options: [
+          "Sewri Fort",
+          "Bandra Fort",
+          "Fort Bassein",
+          "St. George's Fort",
+        ],
+        correctAnswer: "Fort Bassein",
+      },
+    ],
   },
   {
     id: 2,
@@ -22,11 +28,17 @@ const islands = [
     questions: [
       {
         id: "amazon1",
-        question: 'Which famous sea-facing promenade in Mumbai is known for its stunning views and is a popular spot for evening strolls?',
-        options: ['Juhu Beach', 'Marine Drive', 'Worli Seaface', 'Versova Beach'],
-        correctAnswer: 'Marine Drive',
-      }
-    ]
+        question:
+          "Which famous sea-facing promenade in Mumbai is known for its stunning views and is a popular spot for evening strolls?",
+        options: [
+          "Juhu Beach",
+          "Marine Drive",
+          "Worli Seaface",
+          "Versova Beach",
+        ],
+        correctAnswer: "Marine Drive",
+      },
+    ],
   },
   {
     id: 3,
@@ -34,11 +46,17 @@ const islands = [
     questions: [
       {
         id: "impel1",
-        question: 'In the context of web development, which of the following is the most popular framework for building user interfaces?',
-        options: ['Django', 'Flask', 'React', 'Spring'],
-        correctAnswer: 'React',
-      }
-    ]
+        question:
+          "In the city of dreams, I stand tall, A gateway for many, I welcome all. With arches that echo stories of yore, What am I, opening India's door?",
+        options: [
+          "Charminar",
+          "Victoria Memorial",
+          "India Gate",
+          "Gateway of India",
+        ],
+        correctAnswer: "Gateway of India",
+      },
+    ],
   },
   {
     id: 4,
@@ -46,24 +64,31 @@ const islands = [
     questions: [
       {
         id: "marine1",
-        question: 'What is the primary function of a router in a computer network?',
-        options: ['To connect different networks','To store data', 'To process requests', 'To secure the network'],
-        correctAnswer: 'To connect different networks',
-      }
-    ]
+        question:
+          "The code 'VSZZC KZE' (Caesar cipher with shift 5) points to something essential for their travels.",
+        options: ["FIREWALL", "ENCRYPTION", "DATA CODE", "NETWORK"],
+        correctAnswer: "ENCRYPTION",
+      },
+    ],
   },
   {
     id: 5,
-    name: 'Laugh Tale',
+    name: "Laugh Tale",
     questions: [
       {
-        id: 'Laugh1',
-        question: 'What is the correct order of the answers for the above questions?',
-        options: ['Q1-B, Q2-B, Q3-A, Q4-A', 'Q1-B, Q2-B, Q3-C, Q4-A','Q1-A, Q2-B, Q3-A, Q4-D', 'Q1-A, Q2-B, Q3-B, Q4-A'],
-        correctAnswer: 'Q1-B, Q2-B, Q3-C, Q4-A',
-      }
+        id: "Laugh1",
+        question:
+          "What is the correct order of the answers for the above questions?",
+        options: [
+          "Q1-B, Q2-D, Q3-A, Q4-B",
+          "Q1-C, Q2-B, Q3-D, Q4-B",
+          "Q1-A, Q2-B, Q3-D, Q4-B",
+          "Q1-A, Q2-B, Q3-D, Q4-B",
+        ],
+        correctAnswer: "Q1-C, Q2-B, Q3-D, Q4-B",
+      },
     ],
-  }
+  },
 ];
 
 const Route4 = () => {
@@ -83,7 +108,7 @@ const Route4 = () => {
     if (isLocked) return;
 
     const allCorrect = islands[currentIsland].questions.every(
-      q => answers[q.id] === q.correctAnswer
+      (q) => answers[q.id] === q.correctAnswer
     );
     setIsCorrect(allCorrect);
 
@@ -92,7 +117,7 @@ const Route4 = () => {
       setAnswers({});
       setIsCorrect(false);
     } else if (!allCorrect) {
-      setWrongAttempts(prev => prev + 1);
+      setWrongAttempts((prev) => prev + 1);
       if (wrongAttempts + 1 >= 2) {
         setIsLocked(true);
         setTimeLeft(180); // Start the 3 minutes countdown
@@ -104,7 +129,7 @@ const Route4 = () => {
     let timer;
     if (isLocked) {
       timer = setInterval(() => {
-        setTimeLeft(prev => {
+        setTimeLeft((prev) => {
           if (prev <= 1) {
             clearInterval(timer);
             setIsLocked(false);
@@ -121,50 +146,49 @@ const Route4 = () => {
 
   // isko at the end pura code hone pr uncomment krna hai
 
+  // Security Measures
+  useEffect(() => {
+    // Disable Right-Click
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
 
-    // Security Measures
-    useEffect(() => {
-      // Disable Right-Click
-      const handleContextMenu = (e) => {
+    // Disable Key Combinations (F12, Ctrl+Shift+I, etc.)
+    const handleKeyDown = (e) => {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+        (e.ctrlKey && e.key === "U") ||
+        e.key === "F5" ||
+        (e.ctrlKey && e.key === "r") ||
+        e.key === "Backspace" ||
+        (e.altKey && (e.key === "ArrowLeft" || e.key === "ArrowRight"))
+      ) {
         e.preventDefault();
-      };
-  
-      // Disable Key Combinations (F12, Ctrl+Shift+I, etc.)
-      const handleKeyDown = (e) => {
-        if (
-          e.key === 'F12' ||
-          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-          (e.ctrlKey && e.key === 'U') ||
-          (e.key === 'F5') ||
-          (e.ctrlKey && e.key === 'r') ||
-          (e.key === 'Backspace') ||
-          (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight'))
-        ) {
-          e.preventDefault();
-        }
-      };
-  
-      // Prevent Back/Forward Navigation with History API
+      }
+    };
+
+    // Prevent Back/Forward Navigation with History API
+    history.pushState(null, null, window.location.href);
+    const handlePopState = () => {
       history.pushState(null, null, window.location.href);
-      const handlePopState = () => {
-        history.pushState(null, null, window.location.href);
-      };
-  
-      document.addEventListener('contextmenu', handleContextMenu);
-      document.addEventListener('keydown', handleKeyDown);
-      window.addEventListener('popstate', handlePopState);
-  
-      return () => {
-        document.removeEventListener('contextmenu', handleContextMenu);
-        document.removeEventListener('keydown', handleKeyDown);
-        window.removeEventListener('popstate', handlePopState);
-      };
-    }, []);
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   return (
     <div className="overflow-hidden h-screen">
-    <Link to="/" className="text-blue-500 mb-4 inline-block fall-back">
-      &larr; Back to Map
+      <Link to="/" className="text-blue-500 mb-4 inline-block fall-back">
+        &larr; Back to Map
       </Link>
       <h2 className="text-xl mb-2 font-bold rotating-text">West Blue</h2>
       <div className="relative">
@@ -174,16 +198,18 @@ const Route4 = () => {
             <div
               key={island.id}
               className={`flex flex-col items-center cursor-pointer ${
-                index <= currentIsland ? 'opacity-100' : 'opacity-50'
+                index <= currentIsland ? "opacity-100" : "opacity-50"
               }`}
             >
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                index === currentIsland
-                  ? 'bg-yellow-300'
-                  : index < currentIsland
-                  ? 'bg-green-300'
-                  : 'bg-gray-300'
-              }`}>
+              <div
+                className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                  index === currentIsland
+                    ? "bg-yellow-300"
+                    : index < currentIsland
+                    ? "bg-green-300"
+                    : "bg-gray-300"
+                }`}
+              >
                 <MapPin size={24} className="text-gray-700" />
               </div>
               <span className="text-sm mt-1">{island.name}</span>
@@ -193,12 +219,14 @@ const Route4 = () => {
       </div>
       {currentIsland < islands.length && (
         <div className="mt-8 p-4 bg-gray-100 rounded">
-          <h3 className="text-lg font-semibold mb-2">{islands[currentIsland].name}</h3>
+          <h3 className="text-lg font-semibold mb-2">
+            {islands[currentIsland].name}
+          </h3>
           <form onSubmit={handleSubmit}>
-            {islands[currentIsland].questions.map(q => (
+            {islands[currentIsland].questions.map((q) => (
               <div key={q.id} className="mb-4">
                 <p className="font-medium">{q.question}</p>
-                {q.options.map(option => (
+                {q.options.map((option) => (
                   <label key={option} className="block mt-2">
                     <input
                       type="radio"
@@ -217,10 +245,16 @@ const Route4 = () => {
             </button>
           </form>
           {isCorrect && currentIsland < islands.length - 1 && (
-            <p className="mt-4 text-green-500">Correct! You can move to the next island.</p>
+            <p className="mt-4 text-green-500">
+              Correct! You can move to the next island.
+            </p>
           )}
           {isCorrect && currentIsland === islands.length - 1 && (
-            <p className="mt-4 text-black-500">Arrgh! Booty be hidin' in the swashbucklin' Boxing arena, next to the grog-filled V Lounge! Keep yer wits sharp and yer cutlass ready, matey!🏴‍☠️🍻"</p>
+            <p className="mt-4 text-black-500">
+              Arrgh! Booty be hidin' in the swashbucklin' Boxing arena, next to
+              the grog-filled V Lounge! Keep yer wits sharp and yer cutlass
+              ready, matey!🏴‍☠️🍻"
+            </p>
           )}
           {!isCorrect && !isLocked && <p className="mt-4 text-red-500"></p>}
         </div>
@@ -228,10 +262,18 @@ const Route4 = () => {
       {isLocked && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
           <div className="bg-white p-6 rounded shadow-lg text-center">
-            <img src={devilSmile} alt="Devil Smile" className="w-25 h-27 mx-auto mb-4" />
-            <h2 className="text-xl font-bold text-red-600">You’ve put 2 wrong inputs!</h2>
+            <img
+              src={devilSmile}
+              alt="Devil Smile"
+              className="w-25 h-27 mx-auto mb-4"
+            />
+            <h2 className="text-xl font-bold text-red-600">
+              You’ve put 2 wrong inputs!
+            </h2>
             <p className="text-gray-700">Now wait for:</p>
-            <p className="text-2xl font-bold text-blue-500">{`${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? '0' : ''}${timeLeft % 60}`}</p>
+            <p className="text-2xl font-bold text-blue-500">{`${Math.floor(
+              timeLeft / 60
+            )}:${timeLeft % 60 < 10 ? "0" : ""}${timeLeft % 60}`}</p>
           </div>
         </div>
       )}
