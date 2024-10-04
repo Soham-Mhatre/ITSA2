@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import devilSmile from "../components/devilsmile.png";
+import ship from "../components/ship.png";
+import marines from "../components/marines.png";
+import pirate from "../components/pirate.png";
 
 const islands = [
   {
@@ -205,15 +207,15 @@ const Route2 = () => {
               }`}
             >
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                  index === currentIsland
-                    ? "bg-yellow-300"
-                    : index < currentIsland
-                    ? "bg-green-300"
-                    : "bg-gray-300"
-                }`}
+                className={`w-15 h-12 rounded-full flex items-center justify-center`}
               >
-                <MapPin size={24} className="text-gray-700" />
+                {index === currentIsland ? (
+                  <img src={ship} alt="Ship" className="w-50 h-20" />
+                ) : index < currentIsland ? (
+                  <img src={pirate} alt="Pirate" className="w-50 h-20 " />
+                ) : (
+                  <img src={marines} alt="Marines" className="w-20 h-20 bg-gray-300" />
+                )}
               </div>
               <span className="text-sm mt-1">{island.name}</span>
             </div>
