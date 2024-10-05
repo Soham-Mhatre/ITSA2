@@ -13,15 +13,14 @@ const islands = [
       {
         id: "sabaody1",
         question:
-        "I rise above the landscape, reflecting the sun's first light, A symbol of sacrifice, shining so bright. In the heart of India, I stand with pride, Honoring those who bravely died. What am I, a monument to the nation's might?",
-      options: [
-        "Amar Jawan Jyoti",
-        "Statue of Unity",
-        "India Gate",
-        "Jallianwala Bagh Memorial"
-      ],
-      correctAnswer: "India Gate"
-,
+          "What is the name of the historic fort in Mumbai that was originally built by the Portuguese in the 16th century and later expanded by the British?",
+        options: [
+          "Sewri Fort",
+          "Bandra Fort",
+          "Fort Bassein",
+          "St. George's Fort",
+        ],
+        correctAnswer: "Fort Bassein",
       },
     ],
   },
